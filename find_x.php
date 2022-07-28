@@ -4,6 +4,8 @@
 include 'config.php';
 include 'utility.php';
 
+$key = isset($_POST['key']) ? $_POST['key'] : '';
+
 // 網頁內容預設
 $ihc_content = '';
 $ihc_error = '';
@@ -16,10 +18,17 @@ $pdo = db_open();
 
 // SQL 語法
 $sqlstr = "SELECT * FROM person ";
+$sqlstr .= " WHERE username LIKE ? ";  // 依條件修改
+
+$sth = $pdo->prepare($sqlstr);
+
+$keyword = '%' . $key . '%';  // 注意 無法搜尋內含 _ 及 % 的資料 (如有需要，使用 ESCAPE 字句)
+
+$sth->bindValue(1, $keyword, PDO::PARAM_STR);
 
 // 執行 SQL
 try { 
-    $sth = $pdo->query($sqlstr);
+    $sth->execute();
 
     $total_rec = $sth->rowCount();
     $cnt = 0;

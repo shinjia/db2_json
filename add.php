@@ -1,22 +1,20 @@
 <?php
+/* db2_json v1.1  @Shinjia  #2022/07/28 */
 
 $html = <<< HEREDOC
-<button onclick="history.back();">返回</button>
-<h2>新增資料</h2>
+<h2 align="center">新增資料區</h2>
 <form action="add_save.php" method="post">
-<table>
-   <tr><th>代碼</th><td><input type="text" name="usercode" value=''></td></tr>
-   <tr><th>姓名</th><td><input type="text" name="username" value=''></td></tr>
-   <tr><th>地址</th><td><input type="text" name="address"  value=''></td></tr>
-   <tr><th>生日</th><td><input type="text" name="birthday" value=''></td></tr>
-   <tr><th>身高</th><td><input type="text" name="height"   value=''></td></tr>
-   <tr><th>體重</th><td><input type="text" name="weight"   value=''></td></tr>
-   <tr><th>備註</th><td><input type="text" name="remark"   value=''></td></tr>
-</table>
-<p><input type="submit" value="新增"></p>
+    <p>代碼：<input type="text" name="usercode"></p>
+    <p>姓名：<input type="text" name="username"></p>
+    <p>地址：<input type="text" name="address"></p>
+    <p>生日：<input type="text" name="birthday"></p>
+    <p>身高：<input type="text" name="height"></p>
+    <p>體重：<input type="text" name="weight"></p>
+    <p>備註：<input type="text" name="remark"></p>
+    <input type="submit" value="新增">
 </form>
 HEREDOC;
 
 include 'pagemake.php';
-pagemake($html, '');
+pagemake($html);
 ?>
